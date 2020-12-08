@@ -1,0 +1,46 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "memoryDB"
+  },
+  "AccessToken": {
+    "dataSource": "memoryDB",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "memoryDB",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "memoryDB",
+    "public": false,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "memoryDB",
+    "public": false
+  },
+  "employee": {
+    "dataSource": "memoryDB",
+    "public": true
+  },
+  "attendance": {
+    "dataSource": "memoryDB",
+    "public": true
+  }
+}
