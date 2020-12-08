@@ -7,7 +7,11 @@
   },
   "properties": {
     "date": {
-      "type": "date",
+      "type": "String",
+      "required": true
+    },
+    "rfid": {
+      "type": "String",
       "required": true
     },
     "value": {

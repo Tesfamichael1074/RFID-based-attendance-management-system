@@ -8,8 +8,10 @@ module.exports = function(Attendance) {
         return Promise.resolve(data[0].__data);
     }
 
-    var getAttendance = async function(date){
-        var data = await Attendance.find({where: {like: date}})
+    var getAttendance = async function(dt, rd){
+        console.log(dt)
+        console.log(rd)
+        var data = await Attendance.find({where: {date: dt, rfid: rd}})
         return Promise.resolve(data);
     }
 
@@ -18,29 +20,35 @@ module.exports = function(Attendance) {
         cb
     ) => {
         var newdate = new Date()
-        console.log(newdate)
-        console.log(moment(newdate).format("YYYY-MM-DD"))
 
+        getAttendance(moment(newdate).format("YYYY-MM-DD"), rfid).then(reg => {
+            if(reg.length > 0){
+                console.log("=========================================")
+                console.log("rfid  " + rfid + "  is already registered")
+                console.log("=========================================")
+                cb(null, 4)
+            }
+            else {
 
-        // getAttendance().then(r => {
-        //     console.log(r)
-        // })
-        
-        // getEmployeeWithRFID(rfid).then(r => {
-        //     var startdate = new Date()
-        //     var tempdate = new Date()
-        //     startdate.setHours(2, 30, 25)
-           
-        //     var tempobj = {
-        //         "date": tempdate,
-        //         "value": "P",
-        //         "latemins": parseFloat((tempdate - startdate) / 1000/60/60).toFixed(2),
-        //         "employeeId": r.id
-        //       }
-            
-        //     // Attendance.create(tempobj)
+                getEmployeeWithRFID(rfid).then(r => {
 
-        // })
+                    var startdate = new Date()
+                    var tempdate = new Date()
+                    startdate.setHours(2, 30, 25)
+                
+                    var tempobj = {
+                        "date": moment(tempdate).format("YYYY-MM-DD"),
+                        "value": "P",
+                        "rfid": rfid,
+                        "latemins": parseFloat((tempdate - startdate) / 1000/60/60).toFixed(2),
+                        "employeeId": r.id
+                      }
+                    Attendance.create(tempobj)
+                })
+
+                cb(null, 2)
+            }
+        })
         
     }
 

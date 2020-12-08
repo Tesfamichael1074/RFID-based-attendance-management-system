@@ -6,7 +6,7 @@
     "RoleMapping": 1,
     "Role": 1,
     "employee": 2,
-    "attendance": 3
+    "attendance": 1
   },
   "models": {
     "User": {},
@@ -18,8 +18,7 @@
       "1": "{\"fullname\":\"string\",\"rfid\":\"string\",\"age\":0,\"department\":\"string\",\"id\":1}"
     },
     "attendance": {
-      "1": "{\"date\":\"2020-12-08T08:35:45.476Z\",\"value\":\"A\",\"latemins\":0,\"employeeId\":1,\"id\":1}",
-      "2": "{\"date\":\"2020-12-08T12:50:54.916Z\",\"value\":\"P\",\"latemins\":2.34,\"employeeId\":1,\"id\":2}"
+      "0": "{\"date\":\"2020-12-08\",\"rfid\":\"string\",\"value\":\"P\",\"latemins\":3.24,\"employeeId\":1,\"id\":0}"
     }
   }
 }

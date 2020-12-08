@@ -6,7 +6,7 @@
   "memoryDB": {
     "name": "memoryDB",
     "localStorage": "",
-    "file": "memory.json",
+    "file": "../memory.json",
     "connector": "memory"
   }
 }
