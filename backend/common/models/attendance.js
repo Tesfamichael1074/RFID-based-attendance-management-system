@@ -12,8 +12,6 @@ module.exports = function (Attendance) {
   };
 
   var getAttendance = async function (dt, rd) {
-    console.log(dt);
-    console.log(rd);
     var data = await Attendance.find({ where: { date: dt, rfid: rd } });
     return Promise.resolve(data);
   };
@@ -70,4 +68,6 @@ module.exports = function (Attendance) {
       path: "/postAttendance",
     },
   });
+
+
 };

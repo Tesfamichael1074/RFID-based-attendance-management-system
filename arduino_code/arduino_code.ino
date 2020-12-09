@@ -15,6 +15,7 @@ MFRC522 mfrc522(SS_PIN, RST_PIN);  // MFRC522 instance
 const char *ssid =".";
 const char *password = "nahibeja";
 const char *host = "http://192.168.137.253:3000/api/attendances/postAttendance";
+
 HTTPClient http; //Declare an object of class HTTPClient
 WiFiClient client;
 
@@ -23,7 +24,6 @@ String uuid = "";
 String postData;
 
 void setup() {
-    pinMode(LED_BUILTIN, OUTPUT);
     pinMode(ERR_Pin, OUTPUT);
     pinMode(SUC_Pin, OUTPUT);
     
@@ -33,10 +33,13 @@ void setup() {
     connectToWifi();
     SPI.begin();      // Init SPI bus
     mfrc522.PCD_Init();   // Init MFRC522
+    
     delay(4);       // Optional delay. Some board do need more time after init to be ready, see Readme
+   
 }
 
 void loop() {
+
   // Reset the loop if no new card present.
   if ( ! mfrc522.PICC_IsNewCardPresent()) {
     return;
