@@ -46,7 +46,7 @@ module.exports = function (Attendance) {
             Attendance.create(tempobj);
             cb(null, 2);
           } else {
-            cb(null, 3);
+            cb(3, null);
           }
         });
 

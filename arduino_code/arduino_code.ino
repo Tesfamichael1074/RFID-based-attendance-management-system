@@ -7,6 +7,9 @@
 #define RST_PIN         0          // Reset pin connected to D3
 #define SS_PIN          15         // SDA pin connected to D8
 
+#define ERR_Pin         4          // Pin Connected to red led
+#define SUC_Pin          5         // Pin Connected to blue led
+
 MFRC522 mfrc522(SS_PIN, RST_PIN);  // MFRC522 instance
 
 const char *ssid =".";
@@ -21,6 +24,9 @@ String postData;
 
 void setup() {
     pinMode(LED_BUILTIN, OUTPUT);
+    pinMode(ERR_Pin, OUTPUT);
+    pinMode(SUC_Pin, OUTPUT);
+    
     Serial.begin(115200);   // Initialize serial communications with the PC
     delay(4);
     while (!Serial);
@@ -83,5 +89,17 @@ int httpCode = http.POST(postData);
 String payload = http.getString();
 Serial.println(httpCode);
 http.end(); 
+if(httpCode == 500){
+  Serial.println("Not registered");
+  digitalWrite(ERR_Pin, HIGH);
+  delay(3000);
+  digitalWrite(ERR_Pin, LOW);
+}
+else {
+  Serial.println("Attendance taken! ");
+  digitalWrite(SUC_Pin, HIGH);
+  delay(3000);
+  digitalWrite(SUC_Pin, LOW);
+}
 
 }
