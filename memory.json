@@ -5,8 +5,8 @@
     "ACL": 1,
     "RoleMapping": 1,
     "Role": 1,
-    "employee": 2,
-    "attendance": 1
+    "employee": 3,
+    "attendance": 2
   },
   "models": {
     "User": {},
@@ -15,10 +15,10 @@
     "RoleMapping": {},
     "Role": {},
     "employee": {
-      "1": "{\"fullname\":\"string\",\"rfid\":\"string\",\"age\":0,\"department\":\"string\",\"id\":1}"
+      "2": "{\"fullname\":\"string\",\"rfid\":\"string\",\"age\":0,\"department\":\"string\",\"id\":2}"
     },
     "attendance": {
-      "0": "{\"date\":\"2020-12-08\",\"rfid\":\"string\",\"value\":\"P\",\"latemins\":3.24,\"employeeId\":1,\"id\":0}"
+      "1": "{\"date\":\"2020-12-08\",\"rfid\":\"string\",\"value\":\"P\",\"latemins\":3.41,\"employeeId\":2,\"id\":1}"
     }
   }
 }

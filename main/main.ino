@@ -69,6 +69,8 @@ void connectToWifi(){
     }
 
   Serial.println("");
+  Serial.print(" You are connected to ");
+  Serial.println(ssid);
   Serial.print("IP address — ");
   Serial.println(WiFi.localIP()); //IP address assigned to your ESP8266
 
